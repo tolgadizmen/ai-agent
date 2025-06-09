@@ -37,9 +37,10 @@ export function createGmailClient(accessToken: string) {
 }
 
 // Helper function: List emails
-export async function listEmails(accessToken: string, maxResults = 10): Promise<EmailMessage[]> {
-  console.log('Creating Gmail client with token:', accessToken.substring(0, 10) + '...');
-  const gmail = createGmailClient(accessToken);
+export async function listEmails(
+  gmail: ReturnType<typeof createGmailClient>,
+  maxResults = 10
+): Promise<EmailMessage[]> {
   console.log('Fetching emails...');
 
   try {
